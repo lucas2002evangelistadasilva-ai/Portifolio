@@ -612,6 +612,31 @@ body {
     box-shadow: 0 10px 25px rgba(250, 200, 0, 0.5);
 }
 
+.contato-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-linkedin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
+    height: 65px;
+    color: var(--color-blue);
+    background-color: var(--color-yellow);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-linkedin:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(250, 200, 0, 0.5);
+}
+
 /* Animations Triggered by JS */
 .animated-element {
     opacity: 0;
@@ -669,4 +694,173 @@ body {
     text-align: center;
     max-width: 800px;
     color: white;
+}
+
+.site-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.3); /* Faint dark color for light background */
+    font-size: 0.8rem;
+    font-family: 'Geova', sans-serif;
+}
+
+.footer-linkedin {
+    color: rgba(0, 0, 0, 0.3);
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.footer-linkedin:hover {
+    color: rgba(0, 0, 0, 0.6);
+}
+/* =========================================
+   MOBILE RESPONSIVENESS (iPhone & small screens)
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* Navbar */
+    .navbar {
+        padding: 0 15px;
+        height: 60px;
+    }
+    .navbar .logo {
+        font-size: 1.4rem;
+    }
+    .nav-links {
+        gap: 1rem;
+    }
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    /* Hero */
+    .hero-title {
+        font-size: clamp(3.5rem, 15vw, 6rem);
+    }
+    .hero-subtitle {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+        margin-top: -0.5rem;
+    }
+
+    /* Sections */
+    .section {
+        padding: 80px 5%;
+    }
+    
+    .huge-title {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+    }
+    .category-info h2 {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+    }
+    .category-info p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+    
+    /* Horizontal Wrapper adjustments */
+    .category-title-item {
+        padding: 0 5vw;
+    }
+    
+    .grouped-videos-layout {
+        grid-template-rows: auto auto auto;
+        gap: 1rem;
+    }
+
+    .grouped-videos-layout > :first-child {
+        padding-bottom: 0;
+    }
+
+    .grouped-videos-layout > :last-child:not(.videos-row) {
+        padding-top: 0;
+    }
+
+    .grouped-caption {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    /* Swipe horizontal para a linha de vídeos */
+    .videos-row {
+        width: 100vw;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        padding: 0 5vw 10px 5vw; /* Margem lateral para alinhar e espaço na base */
+        justify-content: flex-start;
+        /* Esconde scrollbar nativo de forma suave */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .videos-row::-webkit-scrollbar {
+        display: none;
+    }
+
+    .videos-row .image-wrapper {
+        scroll-snap-align: center;
+        flex: 0 0 85%; /* Ocupa 85% para mostrar um pedaço do próximo */
+        height: 55vh; 
+    }
+
+    /* Contato */
+    .contato-section h2, .contato-section .section-title {
+        font-size: 2.5rem;
+        white-space: normal;
+    }
+    .contato-section p {
+        font-size: 1.2rem;
+    }
+    .btn-contato {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+    }
+    .contato-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .btn-linkedin {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .site-footer {
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Tweaks específicos para telas bem pequenas (iPhone Mini/SE) */
+    .nav-links {
+        gap: 0.5rem;
+    }
+    .nav-links a {
+        font-size: 0.8rem;
+    }
+    .navbar .logo {
+        font-size: 1.2rem;
+    }
+    .sobre-card {
+        padding: 80px 1.5rem 2rem 1.5rem;
+    }
+    .sobre-title {
+        font-size: 2rem;
+        white-space: normal; /* Permite quebrar linha */
+        text-align: center;
+    }
+    .sobre-content p {
+        font-size: 1.1rem;
+    }
+    .videos-row .image-wrapper {
+        flex: 0 0 90%;
+        height: 50vh;
+    }
 }
