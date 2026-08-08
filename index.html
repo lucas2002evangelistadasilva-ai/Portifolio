@@ -30,7 +30,7 @@
 
     <section id="home" class="hero">
         <!-- Background Video -->
-        <video class="hero-video" autoplay muted playsinline poster="hero.png">
+        <video class="hero-video" autoplay muted playsinline>
             <source src="hero.webm" type="video/webm">
             Seu navegador não suporta a tag de vídeo.
         </video>
@@ -448,10 +448,6 @@
         video.setAttribute('muted', '');
         video.playsInline = true;
         video.playbackRate = 0.75; // Deixa o vídeo levemente mais lento (75% da velocidade)
-
-        video.addEventListener('play', () => {
-            video.classList.add('is-playing');
-        });
 
         const startVideo = async () => {
             try {
