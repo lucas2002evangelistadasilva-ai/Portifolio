@@ -270,9 +270,9 @@ body {
 
 .sobre-img {
     position: absolute;
-    left: -120px;
+    left: calc(-50vw + 50%);
     bottom: 0;
-    width: 480px;
+    width: clamp(480px, calc(50vw - 50% + 380px), 650px);
     z-index: 2;
     filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.2));
 }
