@@ -444,19 +444,7 @@
 
         // Efeito Ping-Pong do Vídeo (Vai e Volta)
         const video = document.querySelector('.hero-video');
-        video.muted = true; // Força mudo via JS para iOS
-        video.setAttribute('muted', '');
-        video.playsInline = true;
         video.playbackRate = 0.75; // Deixa o vídeo levemente mais lento (75% da velocidade)
-
-        const startVideo = async () => {
-            try {
-                await video.play();
-            } catch (err) {
-                console.log("Autoplay blocked:", err);
-            }
-        };
-        startVideo();
 
         // Forçar tentativa de autoplay em dispositivos que bloqueiam (ex: iOS Low Power Mode)
         const forcePlayOnInteraction = () => {
