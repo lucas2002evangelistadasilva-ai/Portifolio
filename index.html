@@ -30,7 +30,7 @@
 
     <section id="home" class="hero">
         <!-- Background Video -->
-        <video class="hero-video" autoplay muted playsinline>
+        <video class="hero-video" autoplay muted playsinline poster="hero.png">
             <source src="hero.webm" type="video/webm">
             Seu navegador não suporta a tag de vídeo.
         </video>
@@ -444,7 +444,32 @@
 
         // Efeito Ping-Pong do Vídeo (Vai e Volta)
         const video = document.querySelector('.hero-video');
+        video.muted = true; // Força mudo via JS para iOS
+        video.setAttribute('muted', '');
+        video.playsInline = true;
         video.playbackRate = 0.75; // Deixa o vídeo levemente mais lento (75% da velocidade)
+
+        const startVideo = async () => {
+            try {
+                await video.play();
+            } catch (err) {
+                console.log("Autoplay blocked:", err);
+            }
+        };
+        startVideo();
+
+        // Forçar tentativa de autoplay em dispositivos que bloqueiam (ex: iOS Low Power Mode)
+        const forcePlayOnInteraction = () => {
+            if (video.paused) {
+                video.play();
+            }
+            document.removeEventListener('click', forcePlayOnInteraction);
+            document.removeEventListener('touchstart', forcePlayOnInteraction);
+            document.removeEventListener('scroll', forcePlayOnInteraction);
+        };
+        document.addEventListener('click', forcePlayOnInteraction);
+        document.addEventListener('touchstart', forcePlayOnInteraction, {passive: true});
+        document.addEventListener('scroll', forcePlayOnInteraction, {passive: true});
 
         let reverseInterval;
 
@@ -515,12 +540,24 @@
             });
         });
 
+        // Overlay global para fullscreen
+        const fullscreenOverlay = document.createElement('div');
+        fullscreenOverlay.classList.add('fullscreen-overlay');
+        const fullscreenImg = document.createElement('img');
+        fullscreenOverlay.appendChild(fullscreenImg);
+        document.body.appendChild(fullscreenOverlay);
+
+        fullscreenOverlay.addEventListener('click', () => {
+            fullscreenOverlay.classList.remove('active');
+        });
+
         // Tap para expandir imagens (Fullscreen)
         document.querySelectorAll('.image-wrapper img').forEach(img => {
             img.style.cursor = 'zoom-in';
             img.addEventListener('click', (e) => {
                 e.stopPropagation(); // Evita conflitos com outros clicks
-                img.classList.toggle('fullscreen-media');
+                fullscreenImg.src = img.src;
+                fullscreenOverlay.classList.add('active');
             });
         });
     </script>
