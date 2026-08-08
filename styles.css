@@ -327,17 +327,20 @@ body {
         bottom: 0;
         width: 80%;
         max-width: 350px;
-        margin-bottom: -80px;
+        margin-top: -120px;
+        margin-bottom: 20px;
+        align-self: center;
         z-index: 2;
     }
 
     .sobre-card {
-        padding: 100px 2rem 3rem 2rem;
+        padding: 2rem;
         border-top: 10px solid var(--color-green);
     }
 
     .sobre-title {
         font-size: 2.5rem;
+        text-align: center;
     }
 }
 
@@ -768,9 +771,17 @@ body {
         padding: 0 5vw;
     }
     
+    .horizontal-item.grouped-videos-item {
+        width: 100vw;
+        padding: 0;
+    }
+    
     .grouped-videos-layout {
+        width: 100vw;
         grid-template-rows: auto auto auto;
         gap: 1rem;
+        padding-top: 70px;
+        box-sizing: border-box;
     }
 
     .grouped-videos-layout > :first-child {
@@ -783,7 +794,14 @@ body {
 
     .grouped-caption {
         font-size: 1rem;
-        padding: 0 10px;
+        width: 100vw;
+        padding: 0 5vw;
+        box-sizing: border-box;
+    }
+
+    .image-wrapper img,
+    .image-wrapper video {
+        width: 100%;
     }
 
     /* Swipe horizontal para a linha de vídeos */
@@ -852,15 +870,36 @@ body {
         padding: 80px 1.5rem 2rem 1.5rem;
     }
     .sobre-title {
-        font-size: 2rem;
-        white-space: normal; /* Permite quebrar linha */
+        font-size: clamp(1.5rem, 6.5vw, 2.5rem);
+        white-space: nowrap; /* Impede de quebrar linha */
         text-align: center;
     }
     .sobre-content p {
         font-size: 1.1rem;
     }
+    .sobre-content p:first-child {
+        white-space: nowrap;
+        font-size: clamp(0.9rem, 4.5vw, 1.25rem);
+        text-align: center;
+    }
     .videos-row .image-wrapper {
         flex: 0 0 90%;
         height: 50vh;
     }
+}
+
+/* Fullscreen Media */
+.fullscreen-media {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999 !important;
+    background: rgba(0,0,0,0.9) !important;
+    object-fit: contain !important;
+    padding: 20px;
+    box-sizing: border-box;
+    cursor: zoom-out !important;
+    border-radius: 0 !important;
 }
