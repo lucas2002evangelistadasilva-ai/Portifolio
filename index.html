@@ -255,14 +255,30 @@
                 <div class="horizontal-item grouped-videos-item">
                     <div class="grouped-videos-layout">
                         <div class="videos-row">
-                            <div class="image-wrapper"><video src="public/videos/compressed/30.webm" autoplay loop muted
-                                    playsinline></video></div>
-                            <div class="image-wrapper"><video src="public/videos/compressed/31.webm" autoplay loop muted
-                                    playsinline></video></div>
-                            <div class="image-wrapper"><video src="public/videos/compressed/32.webm" autoplay loop muted
-                                    playsinline></video></div>
-                            <div class="image-wrapper"><video src="public/videos/compressed/33.webm" autoplay loop muted
-                                    playsinline></video></div>
+                            <div class="image-wrapper">
+                                <video autoplay loop muted playsinline webkit-playsinline preload="metadata">
+                                    <source src="public/videos/compressed/30.mp4" type="video/mp4">
+                                    <source src="public/videos/compressed/30.webm" type="video/webm">
+                                </video>
+                            </div>
+                            <div class="image-wrapper">
+                                <video autoplay loop muted playsinline webkit-playsinline preload="metadata">
+                                    <source src="public/videos/compressed/31.mp4" type="video/mp4">
+                                    <source src="public/videos/compressed/31.webm" type="video/webm">
+                                </video>
+                            </div>
+                            <div class="image-wrapper">
+                                <video autoplay loop muted playsinline webkit-playsinline preload="metadata">
+                                    <source src="public/videos/compressed/32.mp4" type="video/mp4">
+                                    <source src="public/videos/compressed/32.webm" type="video/webm">
+                                </video>
+                            </div>
+                            <div class="image-wrapper">
+                                <video autoplay loop muted playsinline webkit-playsinline preload="metadata">
+                                    <source src="public/videos/compressed/33.mp4" type="video/mp4">
+                                    <source src="public/videos/compressed/33.webm" type="video/webm">
+                                </video>
+                            </div>
                         </div>
                         <p class="grouped-caption">Produção de vídeos em eventos, com transmissão nas redes sociais,
                             destacando nosso estande, nossos produtos e as principais soluções apresentadas ao público.
@@ -273,8 +289,12 @@
                 <div class="horizontal-item grouped-videos-item">
                     <div class="grouped-videos-layout">
                         <div class="videos-row">
-                            <div class="image-wrapper"><video src="public/videos/compressed/34.webm" autoplay loop muted
-                                    playsinline></video></div>
+                            <div class="image-wrapper">
+                                <video autoplay loop muted playsinline webkit-playsinline preload="metadata">
+                                    <source src="public/videos/compressed/34.mp4" type="video/mp4">
+                                    <source src="public/videos/compressed/34.webm" type="video/webm">
+                                </video>
+                            </div>
                         </div>
                         <p class="grouped-caption">Nessa série, também criamos uma vinheta de abertura padrão para todos
                             os vídeos, com o objetivo de reforçar a identidade visual da marca.</p>
@@ -284,10 +304,18 @@
                 <div class="horizontal-item grouped-videos-item">
                     <div class="grouped-videos-layout">
                         <div class="videos-row">
-                            <div class="image-wrapper"><video src="public/videos/compressed/35.webm" autoplay loop muted
-                                    playsinline></video></div>
-                            <div class="image-wrapper"><video src="public/videos/compressed/36.webm" autoplay loop muted
-                                    playsinline></video></div>
+                            <div class="image-wrapper">
+                                <video autoplay loop muted playsinline webkit-playsinline preload="metadata">
+                                    <source src="public/videos/compressed/35.mp4" type="video/mp4">
+                                    <source src="public/videos/compressed/35.webm" type="video/webm">
+                                </video>
+                            </div>
+                            <div class="image-wrapper">
+                                <video autoplay loop muted playsinline webkit-playsinline preload="metadata">
+                                    <source src="public/videos/compressed/36.mp4" type="video/mp4">
+                                    <source src="public/videos/compressed/36.webm" type="video/webm">
+                                </video>
+                            </div>
                         </div>
                         <p class="grouped-caption">Esses vídeos fazem parte da série ‘QDicas’, criada para oferecer
                             orientações práticas aos nossos clientes sobre como manter seus equipamentos sempre em
@@ -355,8 +383,12 @@
                     <div class="grouped-videos-layout">
                         <p class="grouped-caption">Hospitalar | O Maior Evento em Saúde da América Latina!</p>
                         <div class="videos-row">
-                            <div class="image-wrapper"><video src="public/eventos/1.webm" autoplay loop muted
-                                    playsinline></video></div>
+                            <div class="image-wrapper">
+                                <video autoplay loop muted playsinline webkit-playsinline preload="metadata">
+                                    <source src="public/eventos/1.mp4" type="video/mp4">
+                                    <source src="public/eventos/1.webm" type="video/webm">
+                                </video>
+                            </div>
                         </div>
                         <p class="grouped-caption">São Paulo 2025</p>
                     </div>
@@ -367,8 +399,12 @@
                     <div class="grouped-videos-layout">
                         <p class="grouped-caption">40º Congresso Brasileiro de Urologia | CBU</p>
                         <div class="videos-row">
-                            <div class="image-wrapper"><video src="public/eventos/2.webm" autoplay loop muted
-                                    playsinline></video></div>
+                            <div class="image-wrapper">
+                                <video autoplay loop muted playsinline webkit-playsinline preload="metadata">
+                                    <source src="public/eventos/2.mp4" type="video/mp4">
+                                    <source src="public/eventos/2.webm" type="video/webm">
+                                </video>
+                            </div>
                         </div>
                         <p class="grouped-caption">Florianópolis (SC) 2025</p>
                     </div>
@@ -466,18 +502,43 @@
             document.addEventListener('pointerdown', forcePlayOnInteraction, {passive: true});
         }
 
-        // Pausar/Tocar vídeos das galerias ao clicar
+        // Pausar/Tocar vídeos das galerias ao clicar e garantir autoplay no mobile
         const portfolioVideos = document.querySelectorAll('.horizontal-scroll-wrapper video');
         portfolioVideos.forEach(vid => {
+            vid.muted = true;
+            vid.defaultMuted = true;
             vid.style.cursor = 'pointer';
+
+            const tryPlay = () => {
+                if (vid.paused) {
+                    vid.play().catch(() => {});
+                }
+            };
+            tryPlay();
+            vid.addEventListener('loadeddata', tryPlay);
+
             vid.addEventListener('click', () => {
                 if (vid.paused) {
-                    vid.play();
+                    vid.play().catch(() => {});
                 } else {
                     vid.pause();
                 }
             });
         });
+
+        const playAllPortfolioOnInteraction = () => {
+            portfolioVideos.forEach(vid => {
+                if (vid.paused) {
+                    vid.play().catch(() => {});
+                }
+            });
+            document.removeEventListener('touchstart', playAllPortfolioOnInteraction);
+            document.removeEventListener('scroll', playAllPortfolioOnInteraction);
+            document.removeEventListener('click', playAllPortfolioOnInteraction);
+        };
+        document.addEventListener('touchstart', playAllPortfolioOnInteraction, {passive: true});
+        document.addEventListener('scroll', playAllPortfolioOnInteraction, {passive: true});
+        document.addEventListener('click', playAllPortfolioOnInteraction);
 
         // Intersection Observer para animar a entrada dos elementos no scroll
         const observerOptions = {
