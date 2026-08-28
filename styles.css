@@ -501,7 +501,7 @@ body {
 }
 
 .horizontal-scroll-wrapper {
-    height: 300vh;
+    height: 450vh;
     /* Define a duração do scroll vertical que se traduz em horizontal */
     position: relative;
     background-color: var(--color-bg);
@@ -863,19 +863,26 @@ body {
     
     /* Horizontal Wrapper adjustments */
     .category-title-item {
-        padding: 0 5vw;
+        width: 100vw;
+        padding: 0 8vw;
+        box-sizing: border-box;
     }
     
     .horizontal-item.grouped-videos-item {
         width: 100vw;
         padding: 0;
+        box-sizing: border-box;
     }
     
     .grouped-videos-layout {
         width: 100vw;
-        grid-template-rows: auto auto auto;
-        gap: 1rem;
-        padding-top: 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem;
+        height: 100vh;
+        padding: 80px 5vw 40px 5vw;
         box-sizing: border-box;
     }
 
@@ -888,38 +895,41 @@ body {
     }
 
     .grouped-caption {
-        font-size: 0.875rem;
-        width: 100vw;
-        padding: 0 5vw;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 90vw;
+        padding: 0;
+        margin: 0;
         box-sizing: border-box;
+        text-align: center;
     }
 
     .image-wrapper img,
     .image-wrapper video {
         width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+        display: block;
     }
 
-    /* Swipe horizontal para a linha de vídeos */
     .videos-row {
-        width: 100vw;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 1rem;
-        padding: 0 5vw 10px 5vw; /* Margem lateral para alinhar e espaço na base */
-        justify-content: flex-start;
-        /* Esconde scrollbar nativo de forma suave */
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-    
-    .videos-row::-webkit-scrollbar {
-        display: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     .videos-row .image-wrapper {
-        scroll-snap-align: center;
-        flex: 0 0 85%; /* Ocupa 85% para mostrar um pedaço do próximo */
-        height: 55vh; 
+        width: 100%;
+        max-width: 78vw;
+        height: 52vh;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
     }
 
     /* Contato */
