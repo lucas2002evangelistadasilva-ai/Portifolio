@@ -65,12 +65,17 @@ body {
     image-rendering: -webkit-optimize-contrast;
     filter: contrast(1.05) brightness(1.02);
     backface-visibility: hidden;
+    pointer-events: none;
 }
 
-/* Esconde o botão de play nativo no iOS e Chrome */
+/* Esconde completamente qualquer botão de play nativo no iOS e Android */
 .hero-video::-webkit-media-controls,
-.hero-video::-webkit-media-controls-start-playback-button {
+.hero-video::-webkit-media-controls-start-playback-button,
+.hero-video::-webkit-media-controls-play-button,
+.hero-video::-webkit-media-controls-panel,
+.hero-video::-webkit-media-controls-container {
     display: none !important;
+    opacity: 0 !important;
     -webkit-appearance: none !important;
 }
 
