@@ -501,7 +501,7 @@ body {
 }
 
 .horizontal-scroll-wrapper {
-    height: 450vh;
+    height: 300vh;
     /* Define a duração do scroll vertical que se traduz em horizontal */
     position: relative;
     background-color: var(--color-bg);
@@ -876,13 +876,12 @@ body {
     
     .grouped-videos-layout {
         width: 100vw;
+        height: 100vh;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        gap: 1.2rem;
-        height: 100vh;
-        padding: 80px 5vw 40px 5vw;
+        padding: 85px 0 25px 0;
         box-sizing: border-box;
     }
 
@@ -895,13 +894,14 @@ body {
     }
 
     .grouped-caption {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         width: 100%;
         max-width: 90vw;
-        padding: 0;
+        padding: 0 5vw;
         margin: 0;
         box-sizing: border-box;
         text-align: center;
+        flex-shrink: 0;
     }
 
     .image-wrapper img,
@@ -913,19 +913,30 @@ body {
         display: block;
     }
 
+    /* Linha de vídeos com scroll horizontal nativo independente da legenda fixa */
     .videos-row {
-        width: 100%;
+        width: 100vw;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        height: auto;
-        padding: 0;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 15px;
+        padding: 0 7.5vw;
         box-sizing: border-box;
+        align-items: center;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .videos-row::-webkit-scrollbar {
+        display: none;
     }
 
     .videos-row .image-wrapper {
-        width: 100%;
-        max-width: 78vw;
+        scroll-snap-align: center;
+        flex: 0 0 85vw;
+        width: 85vw;
+        max-width: 85vw;
         height: 52vh;
         border-radius: 20px;
         overflow: hidden;
